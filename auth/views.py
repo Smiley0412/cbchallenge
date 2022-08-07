@@ -5,12 +5,13 @@ from .serializers import UserSerializer
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 
 @csrf_exempt
 @api_view(['POST'])
+@permission_classes([])
 def login(request):
     data = JSONParser().parse(request)
 
@@ -47,6 +48,7 @@ def login(request):
 
 @csrf_exempt
 @api_view(['POST'])
+@permission_classes([])
 def signup(request):
     serializer = UserSerializer(data=request.data)
 

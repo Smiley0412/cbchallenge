@@ -87,12 +87,18 @@ export default {
           position: "top-right"
         });
       } else {
-        Object.values(result.message).map(m => {
-          const msg = typeof m === 'string' ? m : m[0]
-          $toast.error(msg, {
+        if (typeof result.message === "string") {
+          $toast.error(result.message, {
             position: "top-right"
           });
-        });
+        } else {
+          Object.values(result.message).map(m => {
+            const msg = typeof m === 'string' ? m : m[0]
+            $toast.error(msg, {
+              position: "top-right"
+            });
+          });
+        }
       }
     }
   },

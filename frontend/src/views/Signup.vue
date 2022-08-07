@@ -67,12 +67,18 @@ export default {
         });
         this.$router.push({ name: 'auth-login' });
       } else {
-        Object.values(registration.message).map(m => {
-          const msg = typeof m === 'string' ? m : m[0]
-          $toast.error(msg, {
+        if (typeof registration.message === 'string') {
+          $toast.error(registration.message, {
             position: "top-right"
           });
-        });
+        } else {
+          Object.values(registration.message).map(m => {
+            const msg = typeof m === 'string' ? m : m[0]
+            $toast.error(msg, {
+              position: "top-right"
+            });
+          });
+        }
       }
     },
   }

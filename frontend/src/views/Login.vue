@@ -57,14 +57,22 @@ export default {
         $toast.success(authorization.message, {
           position: "top-right",
         });
-        this.$router.push({ name: 'receipt-messages' });
+        setTimeout(() => {
+          this.$router.push({ name: 'receipt-messages' });
+        }, 100);
       } else {
-        Object.values(authorization.message).map(m => {
-          const msg = typeof m === 'string' ? m : m[0]
-          $toast.error(msg, {
+        if (typeof authorization.message === 'string') {
+          $toast.error(authorization.message, {
             position: "top-right"
           });
-        });
+        } else {
+          Object.values(authorization.message).map(m => {
+            const msg = typeof m === 'string' ? m : m[0]
+            $toast.error(msg, {
+              position: "top-right"
+            });
+          });
+        }
       }
     },
   }
