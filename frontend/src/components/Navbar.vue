@@ -38,6 +38,7 @@ export default {
 	methods: {
 		logout() {
 			localStorage.removeItem('cb_token');
+			localStorage.removeItem('cb_user_id');
 			this.$router.push({ name: 'auth-login' });
 		}
 	},

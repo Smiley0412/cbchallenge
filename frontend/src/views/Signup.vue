@@ -28,6 +28,10 @@
                 class="uk-button uk-button-primary uk-width-1-1 uk-border-rounded uk-text-uppercase">Signup</button>
             </div>
           </form>
+          <div class="uk-flex uk-flex-center uk-margin-top">
+            <span class="uk-margin-small-right">If you have a account, please go to </span>
+            <router-link to="/login">Login Page</router-link>
+          </div>
         </div>
       </div>
     </div>
