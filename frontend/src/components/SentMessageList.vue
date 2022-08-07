@@ -54,7 +54,6 @@ export default {
   },
   data() {
     return {
-      user: null,
       messages: []
     }
   },
@@ -95,9 +94,7 @@ export default {
     }
   },
   mounted() {
-    this.user = localStorage.getItem("cb_user_id");
     this.getAllMessages({
-      user: this.user,
       sent: true
     });
   },

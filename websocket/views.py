@@ -37,7 +37,7 @@ def messages_list(request):
             """
             List of messages sent by user
             """
-            messages = Messages.objects.filter(by=params.get('user')).all()
+            messages = Messages.objects.filter(by=request.user.id).all()
             serializer = MessageSerializer(messages, many=True)
             return JsonResponse(serializer.data, safe=False)
 
@@ -45,7 +45,7 @@ def messages_list(request):
             """
             List of messages sent by user
             """
-            messages = Messages.objects.filter(to=params.get('user')).all()
+            messages = Messages.objects.filter(to=request.user.id).all()
             serializer = MessageSerializer(messages, many=True)
             return JsonResponse(serializer.data, safe=False)
     
